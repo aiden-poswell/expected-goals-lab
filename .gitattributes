@@ -1,0 +1,10 @@
+# Generated figures: matplotlib writes harmless trailing spaces inside SVG path data.
+# Keep them byte-for-byte (no whitespace checks, no line-ending conversion).
+figures/*.svg -text -whitespace
+figures/*.png binary
+figures/portfolio/*.svg -text -whitespace
+figures/portfolio/*.png binary
+# Published S07 artefacts are hash-checked byte for byte: never convert line endings.
+results/final_test_summary.json -text
+reports/final_test_evaluation.md -text
+reports/final_test_execution_log.jsonl -text

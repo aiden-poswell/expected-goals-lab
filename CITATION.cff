@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it, and cite the dataset and paper listed under references."
+title: "Expected Goals Lab: a transparent expected-goals study on Wyscout open event data"
+type: software
+version: 0.1.0
+license: MIT
+authors:
+  - family-names: Poswell
+    given-names: Aiden
+abstract: >-
+  A one-season, five-league study of how much shot location explains the chance of a goal and
+  whether the provider's body-part tag adds predictive value, with chronological partitions,
+  one score-held-out evaluation and a development-only audit of shot-origin coordinates.
+  Research code and aggregate results only; no provider data are redistributed.
+keywords:
+  - football
+  - expected goals
+  - xG
+  - sports analytics
+references:
+  - type: dataset
+    title: "Soccer match event dataset"
+    authors:
+      - family-names: Pappalardo
+        given-names: Luca
+      - family-names: Massucco
+        given-names: Emanuele
+    year: 2019
+    publisher:
+      name: figshare
+    doi: 10.6084/m9.figshare.c.4415000.v5
+    license: CC-BY-4.0
+    notes: "Event data collected by Wyscout. Filtered, quality-screened and augmented in this project."
+  - type: article
+    title: "A public data set of spatio-temporal match events in soccer competitions"
+    authors:
+      - family-names: Pappalardo
+        given-names: Luca
+      - family-names: Cintia
+        given-names: Paolo
+      - family-names: Rossi
+        given-names: Alessio
+      - family-names: Massucco
+        given-names: Emanuele
+      - family-names: Ferragina
+        given-names: Paolo
+      - family-names: Pedreschi
+        given-names: Dino
+      - family-names: Giannotti
+        given-names: Fosca
+    journal: "Scientific Data"
+    volume: 6
+    issue: "Article 236"
+    year: 2019
+    doi: 10.1038/s41597-019-0247-7

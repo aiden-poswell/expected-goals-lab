@@ -1,0 +1,37 @@
+# Environments, caches and tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+dist/
+*.egg-info/
+.claude/
+.vscode/
+.idea/
+
+# Provider data is never committed: raw archives, the locally built shot table, caches.
+data/
+*.csv
+*.parquet
+*.pkl
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.gz
+*.part
+events_*.json
+matches_*.json
+players.json
+teams.json
+
+# Secrets and local configuration
+.env
+.env.*
+*.key
+*.pem
+
+# Any other JSON stays out unless it is deliberately allow-listed below.
+*.json
+!results/final_test_summary.json
