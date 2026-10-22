@@ -42,7 +42,7 @@ Raw conversion rates ignore the chance a shot offered: a header from the penalty
 
 Data: Pappalardo, L. & Massucco, E. (2019), *Soccer match event dataset*, figshare, [doi:10.6084/m9.figshare.c.4415000.v5](https://doi.org/10.6084/m9.figshare.c.4415000.v5), licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); paper: Pappalardo et al. (2019), *A public data set of spatio-temporal match events in soccer competitions*, Scientific Data 6:236, [doi:10.1038/s41597-019-0247-7](https://doi.org/10.1038/s41597-019-0247-7). The underlying event data were collected by Wyscout. The data were filtered to regular shots, quality-screened and augmented with derived geometry for this project; the figures and tables here are adaptations. The dataset authors and Wyscout have not endorsed this work.
 
-**No dataset content is stored in this repository**: the code downloads the public files and checks them against pinned checksums. The original code is MIT-licensed ([LICENSE](LICENSE)); that licence does not cover the dataset, which keeps its own terms ([docs/DATA_LICENSE_AND_ATTRIBUTION.md](docs/DATA_LICENSE_AND_ATTRIBUTION.md)). To cite this work, see [CITATION.cff](CITATION.cff).
+**Raw event archives and the complete processed shot table are not redistributed here**: the code downloads the public Figshare files and checks them against pinned checksums, and the full per-shot table stays local and git-ignored. What *is* published is aggregate results, derived figures, one historical match's shot visualisation, and a few event-level excerpts quoted in the audit reports to document specific data issues (see [docs/DATA_LICENSE_AND_ATTRIBUTION.md](docs/DATA_LICENSE_AND_ATTRIBUTION.md) for the exact distinction). The original code is MIT-licensed ([LICENSE](LICENSE)); that licence does not cover the dataset, which keeps its own terms. To cite this work, see [CITATION.cff](CITATION.cff).
 
 ## Method and evaluation design
 
@@ -54,13 +54,13 @@ Python 3.12 and [uv](https://docs.astral.sh/uv/). In PowerShell:
 
 ```powershell
 uv sync
-uv run pytest -q                                          # offline, synthetic fixtures only
+uv run pytest -q                                          # runs offline; skips the tests below that need the download
 uv run python -m expected_goals_lab.build_shots           # downloads ~78 MB of public data once
 uv run python -m expected_goals_lab.evaluate_nonlinear    # validation-stage comparison
 uv run python -m expected_goals_lab.portfolio_figures     # rebuilds the three figures
 ```
 
-[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) explains which tests need the download, and why the published held-out result is a record to inspect rather than something the supplied code regenerates: a rerun would be a replay, not a new test.
+The validation-stage pipeline and the three portfolio figures are fully reproducible this way. The one-time held-out evaluation is not meant to be run again: its scorer intentionally refuses to execute on this public snapshot (the snapshot differs from the exact research revision that was evaluated, and its result is already published), so running it again would only replay a known outcome, not test anything new. [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) explains which tests need the download and the exact reasons the scorer refuses to run here.
 
 ## Layout
 

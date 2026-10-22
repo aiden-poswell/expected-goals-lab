@@ -8,7 +8,7 @@ Python 3.12 and [uv](https://docs.astral.sh/uv/). Windows PowerShell shown; the 
 
 ```powershell
 uv sync                      # installs the pinned dependencies from uv.lock
-uv run pytest -q             # offline: synthetic fixtures only (see below)
+uv run pytest -q             # offline; mostly synthetic fixtures, one test against real published data (see below)
 uv run ruff check .
 ```
 
@@ -37,10 +37,11 @@ Each of these recomputes numbers that are also printed in the committed reports,
 
 ## Tests
 
-`uv run pytest -q` needs no network and no data: synthetic fixtures stand in for the shot table. These tests are skipped when the local data are absent, and run when you have built the table or filled the cache:
+`uv run pytest -q` needs no network. Most tests use synthetic fixtures in place of the shot table, so they need no data either. One test is the exception: `test_real_s07_summary_is_read_without_being_touched` runs offline too, but it reads real data — the committed, already-published `results/final_test_summary.json` ships with this repository, so that one test checks it directly (hashing it before and after, to prove it is only read) without building anything or downloading anything. The remaining tests that need a built shot table, its cache, or a full local pipeline run are skipped when those are absent, and run once you have built the table or filled the cache:
 
 | Test module | Needs |
 |---|---|
+| `test_real_s07_summary_is_read_without_being_touched` (in `test_portfolio_figures.py`) | nothing beyond this repository's own committed `results/final_test_summary.json` |
 | `test_evaluate_nonlinear`, `test_evaluate_diagnostics` (real-table reproduction checks) | `data/processed/wyscout_regular_shots.csv` |
 | `test_final_evaluation` (real metadata-only preflight) | the shot table, manifests and split assignment |
 | `test_shot_table`, `test_wyscout_audit` (real-archive checks) | the cached Figshare files |

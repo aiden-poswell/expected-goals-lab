@@ -9,7 +9,7 @@ An expected-goals (xG) model gives each shot a probability of becoming a goal. T
 ## What was found where
 
 - **Discovery, on training and validation matches only.** Three baselines (a constant rate, distance, distance plus angle) and two richer candidates (smooth location terms, with and without the body-part tag) were compared on a validation window. The body-part model scored best there (log loss 0.2845 against 0.2930 for distance plus angle), while smooth location terms alone were inconclusive. That choice was frozen in `docs/MODEL_SELECTION_DECISION.md` before any final-test number existed, and later diagnostics were not used to change it.
-- **One-time check on held-out matches.** The two fixed recipes were refitted once on training plus validation (33,772 shots) and scored once on matches played 14 April to 20 May 2018 (6,653 shots, 298 matches, five leagues). Every number in Figure 1 and below comes from that run's frozen summary (`data/processed/final_test_summary.json`, SHA-256 `97a28e69...5edf`). Nothing in this report recomputes it or was used to select anything.
+- **One-time check on held-out matches.** The two fixed recipes were refitted once on training plus validation (33,772 shots) and scored once on matches played 14 April to 20 May 2018 (6,653 shots, 298 matches, five leagues). Every number in Figure 1 and below comes from that run's frozen summary (`results/final_test_summary.json`, SHA-256 `97a28e69...5edf`). Nothing in this report recomputes it or was used to select anything.
 
 | Held-out result | Location + body part | Distance + angle | Same chance for every shot |
 |---|---|---|---|

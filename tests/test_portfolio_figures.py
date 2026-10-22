@@ -162,7 +162,7 @@ def test_a_summary_without_the_expected_scores_is_refused(tmp_path):
         pdata.load_frozen_summary(summary_path, log_path, locked)
 
 
-REAL_S07 = REPO / "data/processed/final_test_summary.json"
+REAL_S07 = REPO / pdata.S07_SUMMARY
 
 
 @pytest.mark.skipif(not REAL_S07.exists(), reason="local S07 artefacts not present")
